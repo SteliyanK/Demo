@@ -35,7 +35,7 @@ while True:
         approx = cv2.approxPolyDP(
             contour, 0.01 * cv2.arcLength(contour, True), True)
 
-        cv2.drawContours(frame, [contour], 0, (0, 0, 255), 5)
+        cv2.drawContours(frame, [contour], 0, (0, 0, 0), 1)
 
         M = cv2.moments(contour)
         if M['m00'] != 0.0:
@@ -86,10 +86,10 @@ while True:
             cv2.circle(frame, (x, y), 5, (255, 255, 255), -1)
 
   
-        elif len(approx) == 0:
-            cv2.putText(frame, color, (x, y),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-            cv2.circle(frame, (x, y), 5, (255, 255, 255), -1)
+        #elif len(approx) == 0:
+            #cv2.putText(frame, color, (x, y),
+                        #cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+            #cv2.circle(frame, (x, y), 5, (255, 255, 255), -1)
     
     
         #pixel_center_bgr = frame[y, x]
