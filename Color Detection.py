@@ -5,12 +5,17 @@ cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
+global x,y
+
 while True:
     _, frame = cap.read()
     hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     height, width, _ = frame.shape
-    cx = int(width / 2)
-    cy = int(height / 2)
+    #cx = int(width / 2)
+    #cy = int(height / 2)
+    
+    x=0
+    y=0
     
     dim = (1080, 720)
     frame = cv2.resize(frame, dim)
@@ -35,13 +40,13 @@ while True:
         approx = cv2.approxPolyDP(
             contour, 0.01 * cv2.arcLength(contour, True), True)
 
-        cv2.drawContours(frame, [contour], 0, (0, 0, 0), 1)
+        cv2.drawContours(frame, [contour], 0, (0, 0, 0), 0)
 
         M = cv2.moments(contour)
         if M['m00'] != 0.0:
             x = int(M['m10']/M['m00'])
             y = int(M['m01']/M['m00'])
-    
+        
         # Pick pixel value
         pixel_center = hsv_frame[y, x]
         hue_value = pixel_center[0]
@@ -92,7 +97,7 @@ while True:
             #cv2.circle(frame, (x, y), 5, (255, 255, 255), -1)
     
     
-        #pixel_center_bgr = frame[y, x]
+        pixel_center_bgr = frame[y, x]
         #b, g, r = int(pixel_center_bgr[0]), int(pixel_center_bgr[1]), int(pixel_center_bgr[2])
         #cv2.rectangle(frame, (x - 220, 10), (x + 200, 120), (255, 255, 255), -1)
         #cv2.putText(frame, color, (x - 200, 100), 0, 3, (b, g, r), 5)
