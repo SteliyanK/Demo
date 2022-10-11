@@ -65,8 +65,8 @@ while True:
             cv2.putText(img, "Red Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
         else:
             cv2.putText(img, "Red Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-    lower_blue = np.array([80, 85, 192])
-    upper_blue = np.array([110, 255, 255])
+    lower_blue = np.array([80, 80, 130])
+    upper_blue = np.array([179, 255, 255])
     mask_blue = cv2.inRange(hsv, lower_blue, upper_blue)
     cnts3, hei=cv2.findContours(mask_blue, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     for c in cnts3:
@@ -113,7 +113,7 @@ cv2.destroyAllWindows
 #red min-0, 85, 192
 #red max-20, 255, 255
 
-#blue min-80, 85, 192
+#blue min-80, 80, 179
 #blue max-110, 255, 255
 
 #yellow min-20, 85, 192
