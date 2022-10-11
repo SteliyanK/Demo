@@ -110,11 +110,11 @@ while True:
 video.release
 cv2.destroyAllWindows
 
-#red min-0, 85, 192
-#red max-20, 255, 255
+#red min-0, 60, 135
+#red max-5, 160, 255
 
 #blue min-80, 80, 179
 #blue max-110, 255, 255
 
-#yellow min-20, 85, 192
-#yellow max-35, 255, 255
+#yellow min-15, 45, 135
+#yellow max-45, 210, 255
