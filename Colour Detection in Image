@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # reading image
-img = cv2.imread('Advanced Colours and Shapes.png')
+img = cv2.imread('123.jpg')
 
 # converting image into grayscale image
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
