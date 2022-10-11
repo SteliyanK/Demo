@@ -31,8 +31,8 @@ while True:
     lower_green = np.array([37, 73, 145])
     upper_green = np.array([79, 255, 255])
     mask_green = cv2.inRange(hsv, lower_green, upper_green)
-    cnts, hei=cv2.findContours(mask_green, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-    for c in cnts:
+    cnts1, hei=cv2.findContours(mask_green, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    for c in cnts1:
         area=cv2.contourArea(c)
         if area>300:
             peri=cv2.arcLength(c,True)
@@ -41,17 +41,80 @@ while True:
             cv2.rectangle(img, (x,y), (x+w, y+h), (0, 255, 0), 2)
             cv2.putText(img, "Points: "+str(len(approx)), (x+w+20, y+h+20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
         if len(approx)==4:
-            cv2.putText(img, "Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            cv2.putText(img, "Green Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
         elif len(approx)==3:
-            cv2.putText(img, "Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            cv2.putText(img, "Green Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
         else:
-            cv2.putText(img, "Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            cv2.putText(img, "Green Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            lower_green = np.array([37, 73, 145])
+    lower_red = np.array([0, 85, 192])
+    upper_red = np.array([20, 255, 255])
+    mask_red = cv2.inRange(hsv, lower_red, upper_red)
+    cnts2, hei=cv2.findContours(mask_red, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    for c in cnts2:
+        area=cv2.contourArea(c)
+        if area>300:
+            peri=cv2.arcLength(c,True)
+            approx=cv2.approxPolyDP(c, 0.02*peri, True)
+            x,y,w,h=cv2.boundingRect(c)
+            cv2.rectangle(img, (x,y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.putText(img, "Points: "+str(len(approx)), (x+w+20, y+h+20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+        if len(approx)==4:
+            cv2.putText(img, "Red Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+        elif len(approx)==3:
+            cv2.putText(img, "Red Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+        else:
+            cv2.putText(img, "Red Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+    lower_blue = np.array([80, 85, 192])
+    upper_blue = np.array([110, 255, 255])
+    mask_blue = cv2.inRange(hsv, lower_blue, upper_blue)
+    cnts3, hei=cv2.findContours(mask_blue, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    for c in cnts3:
+        area=cv2.contourArea(c)
+        if area>300:
+            peri=cv2.arcLength(c,True)
+            approx=cv2.approxPolyDP(c, 0.02*peri, True)
+            x,y,w,h=cv2.boundingRect(c)
+            cv2.rectangle(img, (x,y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.putText(img, "Points: "+str(len(approx)), (x+w+20, y+h+20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+        if len(approx)==4:
+            cv2.putText(img, "Blue Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+        elif len(approx)==3:
+            cv2.putText(img, "Blue Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+        else:
+            cv2.putText(img, "Blue Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+    lower_yellow = np.array([20, 85, 192])
+    upper_yellow = np.array([35, 255, 255])
+    mask_yellow = cv2.inRange(hsv, lower_yellow, upper_yellow)
+    cnts4, hei=cv2.findContours(mask_yellow, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    for c in cnts4:
+        area=cv2.contourArea(c)
+        if area>300:
+            peri=cv2.arcLength(c,True)
+            approx=cv2.approxPolyDP(c, 0.02*peri, True)
+            x,y,w,h=cv2.boundingRect(c)
+            cv2.rectangle(img, (x,y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.putText(img, "Points: "+str(len(approx)), (x+w+20, y+h+20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+        if len(approx)==4:
+            cv2.putText(img, "Yellow Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+        elif len(approx)==3:
+            cv2.putText(img, "Yellow Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+        else:
+            cv2.putText(img, "Yellow Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
     cv2.imshow("Frame", img)
     cv2.imshow("hsv", hsv)
     cv2.imshow("Mask", mask)
-    cv2.imshow("Mask_green", mask_green)
     k=cv2.waitKey(1)
     if k==ord('q'):
         break
 video.release
 cv2.destroyAllWindows
+
+#red min-0, 85, 192
+#red max-20, 255, 255
+
+#blue min-80, 85, 192
+#blue max-110, 255, 255
+
+#yellow min-20, 85, 192
+#yellow max-35, 255, 255
