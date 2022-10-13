@@ -40,15 +40,14 @@ while True:
             x,y,w,h=cv2.boundingRect(c)
             cv2.rectangle(img, (x,y), (x+w, y+h), (0, 255, 0), 2)
             cv2.putText(img, "Points: "+str(len(approx)), (x+w+20, y+h+20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        if len(approx)==4:
-            cv2.putText(img, "Green Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        elif len(approx)==3:
-            cv2.putText(img, "Green Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        else:
-            cv2.putText(img, "Green Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-            lower_green = np.array([37, 73, 145])
-    lower_red = np.array([0, 85, 192])
-    upper_red = np.array([20, 255, 255])
+            if len(approx)==3:
+                cv2.putText(img, "Green Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            elif len(approx)==4:
+                cv2.putText(img, "Green Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            else:
+                cv2.putText(img, "Green Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+    lower_red = np.array([0, 110, 200])
+    upper_red = np.array([5, 210, 255])
     mask_red = cv2.inRange(hsv, lower_red, upper_red)
     cnts2, hei=cv2.findContours(mask_red, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     for c in cnts2:
@@ -59,14 +58,14 @@ while True:
             x,y,w,h=cv2.boundingRect(c)
             cv2.rectangle(img, (x,y), (x+w, y+h), (0, 255, 0), 2)
             cv2.putText(img, "Points: "+str(len(approx)), (x+w+20, y+h+20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        if len(approx)==4:
-            cv2.putText(img, "Red Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        elif len(approx)==3:
-            cv2.putText(img, "Red Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        else:
-            cv2.putText(img, "Red Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-    lower_blue = np.array([80, 80, 130])
-    upper_blue = np.array([179, 255, 255])
+            if len(approx)==4:
+                cv2.putText(img, "Red Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            elif len(approx)==3:
+                cv2.putText(img, "Red Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            else:
+                cv2.putText(img, "Red Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+    lower_blue = np.array([80, 80, 179])
+    upper_blue = np.array([110, 255, 255])
     mask_blue = cv2.inRange(hsv, lower_blue, upper_blue)
     cnts3, hei=cv2.findContours(mask_blue, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     for c in cnts3:
@@ -77,14 +76,14 @@ while True:
             x,y,w,h=cv2.boundingRect(c)
             cv2.rectangle(img, (x,y), (x+w, y+h), (0, 255, 0), 2)
             cv2.putText(img, "Points: "+str(len(approx)), (x+w+20, y+h+20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        if len(approx)==4:
-            cv2.putText(img, "Blue Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        elif len(approx)==3:
-            cv2.putText(img, "Blue Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        else:
-            cv2.putText(img, "Blue Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-    lower_yellow = np.array([20, 85, 192])
-    upper_yellow = np.array([35, 255, 255])
+            if len(approx)==4:
+                cv2.putText(img, "Blue Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            elif len(approx)==3:
+                cv2.putText(img, "Blue Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            else:
+                cv2.putText(img, "Blue Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+    lower_yellow = np.array([15, 45, 192])
+    upper_yellow = np.array([35, 210, 255])
     mask_yellow = cv2.inRange(hsv, lower_yellow, upper_yellow)
     cnts4, hei=cv2.findContours(mask_yellow, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     for c in cnts4:
@@ -95,12 +94,12 @@ while True:
             x,y,w,h=cv2.boundingRect(c)
             cv2.rectangle(img, (x,y), (x+w, y+h), (0, 255, 0), 2)
             cv2.putText(img, "Points: "+str(len(approx)), (x+w+20, y+h+20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        if len(approx)==4:
-            cv2.putText(img, "Yellow Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        elif len(approx)==3:
-            cv2.putText(img, "Yellow Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
-        else:
-            cv2.putText(img, "Yellow Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            if len(approx)==4:
+                cv2.putText(img, "Yellow Rectangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            elif len(approx)==3:
+                cv2.putText(img, "Yellow Triangle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
+            else:
+                cv2.putText(img, "Yellow Circle", (x+w+20, y+h+45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0,255,0), 2)
     cv2.imshow("Frame", img)
     cv2.imshow("hsv", hsv)
     cv2.imshow("Mask", mask)
@@ -110,8 +109,11 @@ while True:
 video.release
 cv2.destroyAllWindows
 
-#red min-0, 60, 135
-#red max-5, 160, 255
+#green min-
+#green max-
+
+#red min-0, 110, 200
+#red max-5, 210, 255
 
 #blue min-80, 80, 179
 #blue max-110, 255, 255
